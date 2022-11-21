@@ -5,8 +5,7 @@ phases:
     commands:
       - echo Entered the install phase...
       # - apt-get update -y
-      # - curl https://github.com/aws/aws-sam-cli/releases/latest/download/aws-sam-cli-linux-x86_64.zip --output 
-aws-sam-cli-linux-x86_64.zip
+      # - curl https://github.com/aws/aws-sam-cli/releases/latest/download/aws-sam-cli-linux-x86_64.zip --output aws-sam-cli-linux-x86_64.zip
       # - unzip aws-sam-cli-linux-x86_64.zip -d sam-installation
       # - sudo ./sam-installation/install
       - sam --version
