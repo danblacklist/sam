@@ -1,0 +1,25 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo Entered the install phase...
+      - apt-get update -y
+      - curl https://github.com/aws/aws-sam-cli/releases/latest/download/aws-sam-cli-linux-x86_64.zip --output aws-sam-cli-linux-x86_64.zip
+      - unzip aws-sam-cli-linux-x86_64.zip -d sam-installation
+      - sudo ./sam-installation/install
+      - sam --version
+  pre_build:
+    commands:
+      - echo Entered the pre_build phase...
+      - ls -l
+
+  build:
+    commands:
+      - sam package --template-file template.yml --output-template-file package.yml --s3-bucket 6522116061
+      # To integrate with CP, you will pass the package.yml file as an output artifact to CFN as template. Update of serverless function resource, triggers a CD deployment.
+      - sam deploy  --template-file package.yml --stack-name my-date-time-app --capabilities CAPABILITY_IAM
+
+  post_build:
+    commands:
+      - echo running test
