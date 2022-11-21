@@ -16,7 +16,7 @@ phases:
 
   build:
     commands:
-      - sam package --template-file template.yml --output-template-file package.yml --s3-bucket 6522116061
+      - sam package --template-file template.yml --output-template-file package.yml --s3-bucket codepipeline-us-east-1-202409166384
       # To integrate with CP, you will pass the package.yml file as an output artifact to CFN as template. Update of serverless function resource, triggers a CD deployment.
       # - sam deploy  --template-file package.yml --stack-name my-date-time-app --capabilities CAPABILITY_IAM
 
